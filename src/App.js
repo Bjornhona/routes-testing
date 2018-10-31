@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import PokemonsPage from './pages/PokemonsPage';
+import ProductDetailPage from './pages/ProductDetailPage';
+
+import Navbar from './components/Navbar';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <BrowserRouter>
+          <div>
+            <h1>Rutas</h1>
+            <Navbar />
+            <Switch>
+              <Route exact path={'/'} component={HomePage} />
+              <Route path={'/login'} component={LoginPage} />
+              <Route path={'/signup'} component={SignupPage} />
+              <Route path={'/products/:id'} component={ProductDetailPage} />
+              <Route path={'/pokemons'} component={PokemonsPage} />
+            </Switch>
+          </div>
+        </BrowserRouter>
     );
   }
 }
